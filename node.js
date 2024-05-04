@@ -7,11 +7,16 @@ function createNode(value, left, right) {
         node.left = left;
     }
 
+    const setRightChild = (node, right) => {
+        node.right = right;
+    }
+
     return {
         value,
         left,
         right,
-        setLeftChild
+        setLeftChild,
+        setRightChild
     }
 }
 
