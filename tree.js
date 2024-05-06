@@ -6,7 +6,7 @@ function createTree(array){
     const root = buildTree(array);
 
     const insert = (value) => {
-        let node = createNode(value);
+        let node = createNode(value,null,null);
         let current = root;
         let parent = null;
         while(current !== null){
@@ -18,20 +18,17 @@ function createTree(array){
             }
         }
         if(value < parent.value){
-            parent.setLeftChild(node);
+            parent.left = node;
         } else {
-            parent.setRightChild(node);
+            parent.right = node;
         }
     }
 
     function buildTree(array){
         let sortedArray = array.sort((a, b) => a - b);
-        console.log(`tree.js - sortedArray: ${sortedArray}`);
         let uniqueArray = sortedArray.filter((value, index, self) => {
             return self.indexOf(value) === index;
         });
-
-        console.log(`tree.js - uniqueArray: ${uniqueArray}`);
        
         let root = buildBinaryTree(uniqueArray, 0, uniqueArray.length - 1);
         return root;
@@ -42,7 +39,7 @@ function createTree(array){
             return null;
         }
         let mid = Math.floor((start + end) / 2);
-        let node = createNode(array[mid]);
+        let node = createNode(array[mid],null,null);
         node.left = buildBinaryTree(array, start, mid - 1);
         node.right = buildBinaryTree(array, mid + 1, end);
         return node;
