@@ -19,10 +19,18 @@ let tree = createTree(array);
 
 tree.insert(6);
 tree.insert(10);
-prettyPrint(tree.root);
+
 
 tree.deleteNode(4);
 prettyPrint(tree.root);
+
+const node = tree.find(23);
+console.log(`node: ${node.value}`);
+
+//TODO test levelOrder method
+
+
+
 
 
 //TODO Fix bug with delete node hard case
